@@ -9,7 +9,7 @@ const {newsArticleModel}=require("./connector");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get("/newsFeed",(req,res)=>{
+app.get("/newsFeeds",(req,res)=>{
     
     let limit=(req.query.limit);
     let offset=(req.query.offset);
