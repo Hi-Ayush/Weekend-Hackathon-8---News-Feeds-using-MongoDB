@@ -23,7 +23,7 @@ app.get("/newFeeds",(req,res)=>{
 
 
     newsArticleModel.find()
-                    .limit(parsseInt(limit))
+                    .limit(parseInt(limit))
                     .skip(parseInt(offset))
                     .then(result=>res.send(result));
 })
