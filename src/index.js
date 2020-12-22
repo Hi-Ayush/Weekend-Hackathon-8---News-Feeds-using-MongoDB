@@ -10,15 +10,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get("/newsFeed",(req,res)=>{
-    let limit=parseInt(req.query.limit);
-    let offset=parseInt(req.query.offset);
+    
+    let limit=(req.query.limit);
+    let offset=(req.query.offset);
 
-    if(isNaN(limit)||isNaN(offset)){
+    if(isNaN(limit)||!limit){
         limit=onePageArticleCount;
+    }
+    if(isNaN(offset)||!offset){
         offset=0;
     }
 
-    newsArticleModel.find().limit(limit).skip(offset).then(result=>res.send(result));
+
+    newsArticleModel.find()
+                    .limit(parsseInt(limit))
+                    .skip(parseInt(offset))
+                    .then(result=>res.send(result));
 })
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
