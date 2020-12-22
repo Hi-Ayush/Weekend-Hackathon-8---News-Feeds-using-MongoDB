@@ -10,8 +10,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get("/newsFeed",(req,res)=>{
-    let limit=parseInt(req.body.limit);
-    let offset=parseInt(req.body.offset);
+    let limit=parseInt(req.query.limit);
+    let offset=parseInt(req.query.offset);
 
     if(isNaN(limit)||isNaN(offset)){
         limit=onePageArticleCount;
